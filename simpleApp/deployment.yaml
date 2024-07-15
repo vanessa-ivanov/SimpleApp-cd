@@ -1,12 +1,12 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: SimpleApp-cd
+  name: simpleapp
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app.kubernetes.io/name: SimpleApp-cd
+      app.kubernetes.io/name: simpleapp
   template:
     spec:
       securityContext:
@@ -14,7 +14,7 @@ spec:
         runAsUser: 1000
         runAsGroup: 1000
       containers:
-      - name: SimpleApp-cd
+      - name: simpleapp
         image: ghcr.io/vanessa-ivanov/simpleApp:latest
         ports:
             -containerPort: 8080
