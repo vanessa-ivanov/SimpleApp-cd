@@ -15,7 +15,7 @@ spec:
         runAsGroup: 1000
       containers:
       - name: SimpleApp-cd
-        image: ghcr.io/vanessa-ivanov/SimpleApp-cd:latest
+        image: ghcr.io/vanessa-ivanov/simpleApp:latest
         ports:
             -containerPort: 8080
         resources:
