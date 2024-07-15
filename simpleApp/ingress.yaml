@@ -1,0 +1,13 @@
+apiVersion: cilium.io/v2
+kind: CiliumNetworkPolicy
+metadata:
+  name: simpleapp-ingress
+  namespace: cdc-simpleapp-dev
+spec:
+  endpointSelector:
+    matchLabels:
+      app.kubernetes.io/name: simpleapp
+  ingress:
+    - fromEndpoints:
+        - matchLabels:
+            app.kubernetes.io/name: simpleapp
