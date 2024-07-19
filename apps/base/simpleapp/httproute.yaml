@@ -5,7 +5,7 @@ metadata:
   namespace: cdc-simpleapp-dev
 spec:
   parentRefs:
-  - name: gateway-cdc-dev-01
+  - name: gateway-cdc-dev-02
     namespace: gateway
   hostnames:
   - simpleapp.dev.at.cloud.inside
