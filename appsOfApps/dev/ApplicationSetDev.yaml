@@ -1,0 +1,37 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: cdc-simpleapp-dev-apps
+  namespace: argocd
+spec:
+  syncPolicy:
+    preserveResourcesOnDeletion: true
+  generators:
+    - matrix:
+        generators:
+          - list:
+              elements:
+                - environment: dev
+                  cluster: cdc-dev-02
+                  namespace: cdc-simpleapp-dev
+          - git:
+              repoURL: https://github.com/vanessa-ivanov/simpleapp-cd.git
+              revision: main
+              directories:
+                - path: "apps/base/*"
+  template:
+    metadata:
+      name: '{{path.basename}}-{{environment}}-{{cluster}}'
+      labels:
+        app.kubernetes.io/component: '{{path}}'
+        environment: '{{environment}}'
+    spec:
+      source:
+        repoURL: https://github.com/vanessa-ivanov/simpleapp-cd.git
+        targetRevision: main
+        path: 'apps/base/{{path.basename}}'
+      destination:
+        name: '{{cluster}}'
+        namespace: '{{namespace}}'
+      syncPolicy:
+        automated: {}
