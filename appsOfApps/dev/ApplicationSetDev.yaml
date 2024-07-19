@@ -23,7 +23,7 @@ spec:
     metadata:
       name: '{{path.basename}}-{{environment}}-{{cluster}}'
       labels:
-        app.kubernetes.io/component: '{{path}}'
+        app.kubernetes.io/component: '{{path.basename}}'
         environment: '{{environment}}'
     spec:
       project: cdc-simpleapp
