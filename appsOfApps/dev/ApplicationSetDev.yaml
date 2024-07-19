@@ -26,6 +26,7 @@ spec:
         app.kubernetes.io/component: '{{path}}'
         environment: '{{environment}}'
     spec:
+      project: cdc-simpleapp
       source:
         repoURL: https://github.com/vanessa-ivanov/simpleapp-cd.git
         targetRevision: main
